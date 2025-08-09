@@ -1,0 +1,15 @@
+1. All developers are expected to install anaconda (Python environment manager).
+2. All developers are required to be familiar with web-development technologies.
+3. Frontend Developers need to be fluent in html, javascript, css, tailwind, reactjs and nextjs (optional) and or other libraries that will be required.
+4. Backend Developers need to be familiar with python, fastapi, and or other libraries that will be required.
+5. Database Engineers need to be fluent in SQL, postgreSQL, SQL Alchemy, mongoDB (optional) and or other libraries that will be required.
+6. No Developer is expected to sit idle for an entire sprint/phase.
+7. The Development has to be rapid as time is of essence and thus developers are expected to work hard for their own skill enhancement and project completion.
+8. All developers have to keep a diary with themselves where they note their own contributions and work related to the project with details such as date, phase number, sprint id and task id.
+9. Each phase will have one or many sprints and each sprint will have and id and the tasts associated will also have id and these tasks will be tracked properly such as start, completion, owner, progress, finish.
+10. Every developer is expected to provide a brief update of their work daily on mentioned platform. They will not be asked everytime, they have to be responsible enough to provide their updates at the end of the day.
+11. Any doubts will be entertained at a specific time of the day if urgent then protocol may change.
+12. All code written by developers must be bug-free and well tested before delivery.
+13. Developers have to write clean code and they must understand what their code does, because if anything breaks later on, they will be asked to fix their own code properly.
+14. For web-dev and machine learning, anything used in the code should be either bundled with the package or should be hosted on the internet to make sure everyone has access.
+15. All developers are requested to manage their own code versions manually and or with git personally on their machine, as they might be asked any time to roll back to any previous version of their code.

@@ -1,2 +1,2 @@
-# soil2silicon
+# soil2silicon 🌱
 As discussed.
