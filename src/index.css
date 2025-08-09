@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@keyframes glowBarMove {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes lineGrowShrink {
+  0%, 100% {
+    transform: scaleX(0.3);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lineGrowShrinkReverse {
+  0%, 100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleX(0.3);
+    opacity: 0.4;
+  }
+}
+
+.glow-bar {
+  height: 100%;
+  width: 200%;
+  background: linear-gradient(to right, transparent, var(--tw-prose-invert) 40%, transparent);
+  animation: glowBarMove 2s linear infinite;
+}
+
+.animate-glow-bar {
+  animation: glowBarMove 2s linear infinite;
+}
+
+.animate-line-glow {
+  animation: lineGrowShrink 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-line-glow-reverse {
+  animation: lineGrowShrinkReverse 2s ease-in-out infinite;
+  transform-origin: center;
+}
