@@ -5,6 +5,7 @@ import HeroContainer from './Section1/HeroContainer.jsx';
 import VideoScrollSection from './Section1/VideoScrollSection.jsx';
 import ProgressBar from './ProgressBar.jsx';
 
+
 const Section1 = () => {
     return (
         <div>
