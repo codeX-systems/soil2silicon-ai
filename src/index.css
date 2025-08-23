@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @keyframes glowBarMove {
   0% {
     transform: translateX(-100%);
@@ -51,3 +52,24 @@
   animation: lineGrowShrinkReverse 2s ease-in-out infinite;
   transform-origin: center;
 }
+
+/* * {
+  cursor: none !important;
+} */
+
+
+/* Default (dark mode) styles */
+body.light-mode {
+  background-color: #ffffff;
+  color: #222222;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #eeeeee;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+/* Example: You can add more theme-specific styling as needed */

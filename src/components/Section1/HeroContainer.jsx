@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import SoilToSiliconCard from './SoilToSiliconCard';
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import ThemeToggle from './ThemeToggle';
+
+
+
 
 const transitionConfig = {
   duration: 0.6,
@@ -8,12 +12,30 @@ const transitionConfig = {
 };
 
 const HeroContainer = () => {
+  const sectionRef = useRef(null);
+
+  // Track scroll progress for fade-out
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"], 
+  });
+
+  // Map scroll to opacity (1 → 0)
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
-    <section className="px-30 py-19 max-w-7xl mx-auto font-[Montserrat] text-white">
+    <motion.section
+      ref={sectionRef}
+      style={{ opacity }}
+      className="px-30 py-19 max-w-7xl mx-auto font-[Montserrat] text-white"
+    >
       <div className="flex flex-col md:flex-row items-start justify-between gap-8">
         
         {/* Left Content */}
         <div className="flex-1">
+          <div className="theme-toggle-container" style={{ position: 'fixed', left: 0, top: '50%', transform: 'translateY(-50%)' }}>
+            <ThemeToggle />
+          </div>
           {/* Header */}
           <motion.h1
             initial={{ y: 40, opacity: 0 }}
@@ -47,7 +69,7 @@ const HeroContainer = () => {
                 boxShadow: '0px 0px 15px rgba(0, 255, 200, 0.3)',
               }}
               whileTap={{ scale: 0.97 }}
-              className="flex gap-1 border cursor-crosshair border-teal-400 text-teal-400 px-5 py-2 rounded-xl hover:bg-teal-400 hover:text-gray-950"
+              className="flex gap-1 border cursor-crosshair border-teal-400 z-9 text-teal-400 px-5 py-2 rounded-xl hover:bg-teal-400 hover:text-gray-950"
             >
               <i className="ri-play-mini-fill"></i>
               Neural Demo
@@ -80,8 +102,38 @@ const HeroContainer = () => {
           <SoilToSiliconCard />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
 export default HeroContainer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
