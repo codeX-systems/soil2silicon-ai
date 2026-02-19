@@ -11,7 +11,7 @@ To ensure smooth collaboration and prevent conflicts, all team members **must st
 
 All contributors must **only clone and work on the following branch:**
 
-<BRANCH_NAME>
+Soil-To-Silicon-Final-Dev
 
 
 Do NOT clone or work on any other branch.
@@ -40,15 +40,14 @@ After completing your work:
 
 git add .
 git commit -m "Clear and descriptive commit message"
-git push origin <BRANCH_NAME>
+git push origin Soil-To-Silicon-Final-Dev
 You must always push to:
 
-<BRANCH_NAME>
-Do NOT:
+Soil-To-Silicon-Final-Dev
 
-Create new branches
-
-Push to main or master
+### Do NOT:
+1. Create new branches
+2. Push to main or master
 
 ## 🧪 4. Mandatory Testing Before Push
 Before pushing your changes:
