@@ -18,7 +18,7 @@ Do NOT clone or work on any other branch.
 
 To clone the specific branch:
 ```
-git clone -b <BRANCH_NAME> <repository-url>
+git clone -b Soil-To-Silicon-Final-Dev <repository-url>
 ```
 ## ✍️ 2. Make Changes Carefully
 Make changes only to the files assigned to you.
@@ -36,14 +36,12 @@ Dependency files (e.g., package.json, requirements.txt) unless approved
 Unauthorized changes will result in PR rejection.
 
 ## 📤 3. Commit & Push to the SAME Branch
-After completing your work:
+### After completing your work:
 
-git add .
-git commit -m "Clear and descriptive commit message"
-git push origin Soil-To-Silicon-Final-Dev
-You must always push to:
-
-Soil-To-Silicon-Final-Dev
+1. git add .
+2. git commit -m "Clear and descriptive commit message"
+3. git push origin Soil-To-Silicon-Final-Dev
+4. You must always push to: #### Soil-To-Silicon-Final-Dev
 
 ### Do NOT:
 1. Create new branches
@@ -54,40 +52,40 @@ Before pushing your changes:
 
 At least one teammate must test your changes locally
 
-Ensure:
+### Ensure:
 
-Backend runs successfully
+1. Backend runs successfully
 
-Frontend runs successfully
+2. Frontend runs successfully
 
-No console errors
+3. No console errors
 
-No broken features
+4. No broken features
 
-Only push after confirmation.
+5. Only push after confirmation.
 
 ## 🔁 5. Create Pull Request (PR) Only
-After pushing:
+### After pushing:
 
-Create a Pull Request
+1. Create a Pull Request
 
-Do NOT merge the PR yourself
+2. Do NOT merge the PR yourself
 
 ## 💬 6. Mention Tester in Pull Request
-While creating the Pull Request, include in the comments:
 
-Tested by: @TeammateName
-Pull requests without a tester mention will not be reviewed.
+While creating the Pull Request, include in the comments:
+1. Tested by: @TeammateName
+2. Pull requests without a tester mention will not be reviewed.
 
 ## ❌ 7. STRICT RULE: Do NOT MERGE
-Under no circumstances should you:
+### Under no circumstances should you:
 
-Merge your own PR
+1. Merge your own PR
 
-Merge someone else's PR
+2. Merge someone else's PR
 
-Override branch protections
+3. Override branch protections
 
-Merging is restricted to the project maintainer only.
+4. Merging is restricted to the project maintainer only.
 
 
