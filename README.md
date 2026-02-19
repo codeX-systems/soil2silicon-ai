@@ -20,7 +20,7 @@ To clone the specific branch:
 ```
 git clone -b <BRANCH_NAME> <repository-url>
 ```
-✍️ 2. Make Changes Carefully
+## ✍️ 2. Make Changes Carefully
 Make changes only to the files assigned to you.
 
 Do NOT modify:
@@ -35,7 +35,7 @@ Dependency files (e.g., package.json, requirements.txt) unless approved
 
 Unauthorized changes will result in PR rejection.
 
-📤 3. Commit & Push to the SAME Branch
+## 📤 3. Commit & Push to the SAME Branch
 After completing your work:
 
 git add .
@@ -50,7 +50,7 @@ Create new branches
 
 Push to main or master
 
-🧪 4. Mandatory Testing Before Push
+## 🧪 4. Mandatory Testing Before Push
 Before pushing your changes:
 
 At least one teammate must test your changes locally
@@ -67,20 +67,20 @@ No broken features
 
 Only push after confirmation.
 
-🔁 5. Create Pull Request (PR) Only
+## 🔁 5. Create Pull Request (PR) Only
 After pushing:
 
 Create a Pull Request
 
 Do NOT merge the PR yourself
 
-💬 6. Mention Tester in Pull Request
+## 💬 6. Mention Tester in Pull Request
 While creating the Pull Request, include in the comments:
 
 Tested by: @TeammateName
 Pull requests without a tester mention will not be reviewed.
 
-❌ 7. STRICT RULE: Do NOT MERGE
+## ❌ 7. STRICT RULE: Do NOT MERGE
 Under no circumstances should you:
 
 Merge your own PR
