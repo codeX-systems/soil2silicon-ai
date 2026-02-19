@@ -9,16 +9,21 @@ To ensure smooth collaboration and prevent conflicts, all team members **must st
 
 ## 🌿 1. Clone the Correct Branch
 
-All contributors must **only clone and work on the following branch:**
+All contributors must **only clone and work on their own branch that has already been created in the following format:**
 
-Soil-To-Silicon-Final-Dev
+**<theirname-final-dev-uid>**
 
+### Branches created are:
+1. ``` atmoja-final-dev-0023 ```
+2. ``` rohan-final-dev-0078 ```
+3. ``` sidrah-final-dev-0034 ```
+4. ``` adiba-final-dev-0045 ```
 
 Do NOT clone or work on any other branch.
 
 To clone the specific branch:
 ```
-git clone -b Soil-To-Silicon-Final-Dev <repository-url>
+git clone -b <their branch name> https://github.com/codeX-systems24/soil2silicon.git
 ```
 ## ✍️ 2. Make Changes Carefully
 Make changes only to the files assigned to you.
@@ -33,24 +38,12 @@ Configuration files
 
 Dependency files (e.g., package.json, requirements.txt) unless approved
 
-Unauthorized changes will result in PR rejection.
+Unauthorized changes will result in unnecessary chaos in code.
 
-## 📤 3. Commit & Push to the SAME Branch
-### After completing your work:
+## 🧪 3. Mandatory Testing Before Push
+Before creating a pull request:
 
-1. git add .
-2. git commit -m "Clear and descriptive commit message"
-3. git push origin Soil-To-Silicon-Final-Dev
-4. You must always push to: #### Soil-To-Silicon-Final-Dev
-
-### Do NOT:
-1. Create new branches
-2. Push to main or master
-
-## 🧪 4. Mandatory Testing Before Push
-Before pushing your changes:
-
-At least one teammate must test your changes locally
+1. At least one teammate must test your changes locally and approve
 
 ### Ensure:
 
@@ -62,14 +55,27 @@ At least one teammate must test your changes locally
 
 4. No broken features
 
-5. Only push after confirmation.
+5. Only create a pull request after confirmation.
+
+## 📤 4. Commit & Push to the SAME Branch
+### After completing your work:
+
+1. git add .
+2. git commit -m "Clear and descriptive commit message"
+3. git branch (to check that it is your branch)
+4. git push
+5. You must always push to: #### your own branch
+
+### Do NOT:
+1. Create new branches
+2. Push to main or master
 
 ## 🔁 5. Create Pull Request (PR) Only
 ### After pushing:
 
 1. Create a Pull Request
 
-2. Do NOT merge the PR yourself
+2. Do NOT merge the Pull Request yourself
 
 ## 💬 6. Mention Tester in Pull Request
 
@@ -86,6 +92,5 @@ While creating the Pull Request, include in the comments:
 
 3. Override branch protections
 
-4. Merging is restricted to the project maintainer only.
 
 
