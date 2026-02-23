@@ -5,7 +5,7 @@ from models import User
 # Use a real secret in production!
 SECRET = os.getenv("JWT_SECRET", "LOCAL_DEVELOPMENT_SECRET_123")
 
-bearer_transport = BearerTransport(tokenUrl="auth/login")
+bearer_transport = BearerTransport(tokenUrl="auth/jwt/login")
 
 def get_jwt_strategy() -> JWTStrategy:
     return JWTStrategy(secret=SECRET, lifetime_seconds=3600)

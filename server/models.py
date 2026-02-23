@@ -6,7 +6,7 @@ from pydantic import Field, EmailStr
 from fastapi_users import schemas
 
 # Fix: No brackets here. Beanie handles the ID internally.
-class User(BeanieBaseUser):
+class User(BeanieBaseUser,Document):
     username: str = Field(unique=True, pattern=r"^[a-zA-Z0-9]+$")
     fullname: str
     contact: str
@@ -31,3 +31,6 @@ class UserCreate(schemas.BaseUserCreate):
     state: str
     district: str
     email: Optional[EmailStr] = None
+
+class Settings:
+        name = "users"

@@ -13,6 +13,14 @@ class UserManager(BaseUserManager[User, PydanticObjectId]):
     reset_password_token_secret = SECRET
     verification_token_secret = SECRET
 
+    def parse_id(self, value: any) -> PydanticObjectId:
+        if isinstance(value, PydanticObjectId):
+            return value
+        try:
+            return PydanticObjectId(value)
+        except Exception:
+            return value
+
     async def on_after_register(self, user: User, request: Request = None):
         print(f"User {user.username} has been created with ID {user.id}")
 
