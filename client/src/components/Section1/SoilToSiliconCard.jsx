@@ -21,7 +21,7 @@ const SoilToSiliconCard = () => {
 
             {/* Card Content */}
             <motion.div
-              className="relative z-10 bg-[#111111]  border border-white/10 rounded-[28px] p-6 md:p-8 lg:p-10 overflow-hidden backdrop-blur-lg transform-gpu shadow-[0_0_40px_#00ffcc44]"
+              className="relative z-50 bg-[#111111]  border border-white/10 rounded-[28px] p-6 md:p-8 lg:p-10 overflow-hidden backdrop-blur-lg transform-gpu shadow-[0_0_40px_#00ffcc44]"
               style={{ transformStyle: 'preserve-3d' }}
               initial={{ rotateY: -10, rotateX: 5 }}
               whileHover={{ rotateY: 0, rotateX: 0, scale: 1.02 }}

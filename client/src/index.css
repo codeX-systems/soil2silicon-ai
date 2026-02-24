@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 
+
+
 @keyframes glowBarMove {
   0% {
     transform: translateX(-100%);

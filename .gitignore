@@ -1,3 +1,22 @@
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Secrets and Config
+.env
+
+# IDEs/Editors
+.idea/
+.vscode/
+*.swp
+*.sublime-project
+
+# Python-specific
+__pycache__/
+*.py[cod]
+
 # Logs
 logs
 *.log

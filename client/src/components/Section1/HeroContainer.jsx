@@ -16,9 +16,10 @@ const HeroContainer = () => {
     <motion.section
       ref={sectionRef}
       style={{ opacity }}
-      className="px-6 md:px-16 lg:px-24 py-12 md:py-20 max-w-7xl mx-auto font-[Montserrat] text-white"
+      className="relative z-10 px-6 md:px-16 lg:px-24 py-12 md:py-20 max-w-7xl mx-auto font-[Montserrat] text-white"
     >
-      <div className="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-8 relative">
+      {/* 🔥 Added z-20 to keep content above background elements */}
+      <div className="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-8 relative z-20">
         
         {/* Left Content */}
         <div className="flex-1 text-center md:text-left">
@@ -50,7 +51,7 @@ const HeroContainer = () => {
             <motion.button
               whileHover={{ scale: 1.08, boxShadow: '0px 0px 15px rgba(0, 255, 200, 0.3)' }}
               whileTap={{ scale: 0.97 }}
-              className="flex gap-1 border cursor-crosshair border-teal-400 z-9 text-teal-400 px-5 py-2 rounded-xl hover:bg-teal-400 hover:text-gray-950"
+              className="flex gap-1 border cursor-crosshair border-teal-400 z-10 text-teal-400 px-5 py-2 rounded-xl hover:bg-teal-400 hover:text-gray-950"
             >
               <i className="ri-play-mini-fill"></i>
               Neural Demo
@@ -72,8 +73,8 @@ const HeroContainer = () => {
           </motion.div>
         </div>
 
-        {/* Right Card */}
-        <div className="flex-1 flex justify-start md:justify-end items-start md:items-start relative">
+        {/* Right Card Container */}
+        <div className="flex-1 flex justify-start md:justify-end items-start relative min-h-[500px]">
           <SoilToSiliconCard />
         </div>
 

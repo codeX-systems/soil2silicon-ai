@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
+import { useNavigate } from "react-router-dom";
 
 const navVariants = {
   hidden: { y: -50, opacity: 0 },
@@ -22,21 +23,38 @@ const itemVariants = {
 };
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const navRef = useRef(null);
   const [activeSection, setActiveSection] = useState("");
   const [hoveredItem, setHoveredItem] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // 🔐 Auth state
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem("token")
+  );
 
-  
-  // ✅ Updated nav items: Contact instead of Talk To Us
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setIsLoggedIn(!!localStorage.getItem("token"));
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
+
   const navItems = [
-      { id: "solutions", label: "Our Solutions", color: "teal" },
+    { id: "solutions", label: "Our Solutions", color: "teal" },
     { id: "codex", label: "codeX", color: "red" },
     { id: "contact", label: "Contact", color: "teal" },
   ];
-
-
 
   /* ===== Scroll Blur Effect ===== */
   useEffect(() => {
@@ -70,9 +88,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
-
-
   /* ===== Active Section Observer ===== */
   useEffect(() => {
     const sections = navItems
@@ -100,12 +115,6 @@ const Navbar = () => {
 
   return (
     <>
-
-
-
-
-
-      {/* ===== Navbar ===== */}
       <motion.nav
         ref={navRef}
         variants={navVariants}
@@ -113,10 +122,9 @@ const Navbar = () => {
         animate="visible"
         className="fixed top-0 left-0 right-0 z-50 px-6 md:px-20 py-4 pt-7 flex items-center justify-between border-b-[0.5px] font-[Poppins]"
       >
-        {/* Logo */}
         <div className="text-2xl font-bold text-teal-400">icon</div>
 
-        {/* Desktop Menu */}
+        {/* Desktop */}
         <div className="hidden md:flex items-center space-x-8 text-white">
           {navItems.map((item) => (
             <motion.a
@@ -126,7 +134,9 @@ const Navbar = () => {
               onMouseEnter={() => setHoveredItem(item.id)}
               onMouseLeave={() => setHoveredItem(null)}
               className={`relative pb-2 text-md ${
-                item.color === "teal" ? "hover:text-teal-300" : "hover:text-red-300"
+                item.color === "teal"
+                  ? "hover:text-teal-300"
+                  : "hover:text-red-300"
               }`}
             >
               {item.label}
@@ -137,61 +147,59 @@ const Navbar = () => {
                 initial={{ scaleX: 0 }}
                 animate={{
                   scaleX:
-                    activeSection === item.id || hoveredItem === item.id ? 1 : 0,
+                    activeSection === item.id ||
+                    hoveredItem === item.id
+                      ? 1
+                      : 0,
                 }}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
+                transition={{ duration: 0.25 }}
                 style={{ originX: "50%" }}
               />
             </motion.a>
           ))}
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="ml-6 bg-teal-400 hover:bg-teal-500 text-slate-950 font-semibold py-2 px-5 rounded-3xl"
-          >
-            Launch App
-          </motion.button>
+          {/* 🔐 Auth Buttons */}
+          {isLoggedIn ? (
+            <>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                onClick={() => navigate("/dashboard")} // ✅ new route
+                className="ml-6 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-5 rounded-3xl"
+                >
+                Dashboard
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                onClick={handleLogout}
+                className="ml-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-5 rounded-3xl"
+              >
+                Logout
+              </motion.button>
+            </>
+          ) : (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              onClick={() => navigate("/auth")}
+              className="ml-6 bg-teal-400 hover:bg-teal-500 text-slate-950 font-semibold py-2 px-5 rounded-3xl"
+            >
+              Launch App
+            </motion.button>
+          )}
         </div>
 
-
-
-
-
-        {/* Mobile Hamburger */}
+        {/* Mobile Toggle */}
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-teal-400"
           >
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              {menuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+            ☰
           </button>
         </div>
       </motion.nav>
 
-
-
-
-      {/* ===== Mobile Menu ===== */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -200,38 +208,43 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden fixed top-[72px] left-0 right-0 z-40 bg-[#0d0d0d]/95 backdrop-blur-xl border-t border-white/10 flex flex-col items-center py-6 space-y-6 text-white"
           >
-{navItems.map((item) => (
-  <motion.a
-    key={item.id}
-    href={`#${item.id}`}
-    onClick={() => setMenuOpen(false)}
-    whileHover={{ scale: 1.1 }}   // stronger bounce on hover
-    whileTap={{ scale: 0.95 }}    // click feedback
-    className={`text-lg font-semibold transition-colors ${
-      activeSection === item.id
-        ? item.color === "teal"
-          ? "text-teal-400"
-          : "text-red-500"
-        : item.color === "teal"
-        ? "hover:text-teal-300"
-        : "hover:text-red-300"
-    }`}
-  >
-    {item.label}
-  </motion.a>
-))}
+            {isLoggedIn ? (
+              <>
+                <button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    navigate("/dashboard"); // ✅ new route
+                  }}
+                  className="bg-indigo-500 text-white py-2 px-6 rounded-full"
+                  >
+                  Dashboard
+                </button>
 
-
-            <button className="mt-2 bg-teal-400 text-slate-950 font-semibold py-2 px-6 rounded-full">
-              Launch App
-            </button>
+                <button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    handleLogout();
+                  }}
+                  className="bg-red-500 text-white py-2 px-6 rounded-full"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={() => {
+                  setMenuOpen(false);
+                  navigate("/auth");
+                }}
+                className="bg-teal-400 text-slate-950 py-2 px-6 rounded-full"
+              >
+                Launch App
+              </button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
 
-
-
-      {/* Spacer */}
       <div className="h-20" />
     </>
   );
