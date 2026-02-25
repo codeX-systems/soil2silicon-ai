@@ -1,33 +1,32 @@
 import React from "react";
 
-// Username Component
-// Props:
-// - imageSrc: URL for user profile image
-// - username: displayed username text
-// - size: optional size for the profile circle (default: 64px)
+export default function Username({ imageSrc, username, size = 50 }) {
+  // Generate a professional initial-based avatar if imageSrc is null or empty
+  const avatarFallback = `https://ui-avatars.com/api/?name=${username || "User"}&background=15803d&color=fff`;
 
-export default function Username({ imageSrc, username, size = 64 }) {
   return (
-    <div className="flex flex-col items-center space-y-2">
+    <div className="flex items-center gap-3">
       {/* Profile Circle */}
       <div
-        className="rounded-full overflow-hidden bg-green-200 flex items-center justify-center"
+        className="rounded-full overflow-hidden bg-green-100 flex items-center justify-center border-2 border-green-600 shadow-sm"
         style={{ width: size, height: size }}
       >
-        {imageSrc ? (
-          <img
-            src={imageSrc}
-            alt="User"
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <span className="text-green-800 text-sm">No Img</span>
-        )}
+        <img
+          src={imageSrc || avatarFallback}
+          alt="User Profile"
+          className="w-full h-full object-cover"
+          onError={(e) => { e.target.src = avatarFallback; }}
+        />
       </div>
 
-      {/* Username */}
-      <div className="text-green-900 text-sm font-medium text-center">
-        {username || "User Name"}
+      {/* Username Text - Left Aligned */}
+      <div className="flex flex-col">
+        <span className="text-[10px] font-bold text-green-700 uppercase tracking-wider leading-none">
+          Welcome back,
+        </span>
+        <div className="text-green-900 text-lg font-black leading-tight">
+          {username || "Farmer"}
+        </div>
       </div>
     </div>
   );

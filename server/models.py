@@ -4,19 +4,20 @@ from beanie import Document, Indexed
 from pydantic import Field, EmailStr
 
 
+# models.py - Add this field to your User class
 class User(Document):
-    # Using Indexed(unique=True) is more explicit for Beanie
     contact: Indexed(str, unique=True) = Field(pattern=r"^[0-9]{10}$")
     username: Indexed(str, unique=True) = Field(pattern=r"^[a-zA-Z0-9]+$")
-
     password_hash: str
     fullname: str
     email: Optional[EmailStr] = None
     state: str
     district: str
+    profile_pic: Optional[str] = None  # <--- NEW FIELD
 
-    # Standardized UTC timestamp
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+    # ... rest of your class
 
     class Settings:
         name = "users"
