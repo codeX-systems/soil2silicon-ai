@@ -15,29 +15,28 @@ from app_models import (
     Task,
     CurrentCrop,
     PastCrop,
-    FieldSoilCondition
+    FieldSoilCondition,
+    CropInfo,        # <-- ADDED
+    SoilLibrary,     # <-- ADDED
+    CropTimeline     # <-- ADDED
 )
 
 # Import Routers
 from auth_routes import router as auth_router
 from farm_data_routes import router as farm_router
-# --- NEW: Import the Prediction Router ---
 from prediction_routes import router as prediction_router
 
 
-# ------------------ LIFESPAN (Replaces @app.on_event) ------------------
+# ------------------ LIFESPAN ------------------
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup logic: Database connection
     database_url = os.getenv("DATABASE_URL")
     if not database_url:
         raise RuntimeError("DATABASE_URL not set in .env")
 
-    # Initialize MongoDB Client
     client = AsyncIOMotorClient(database_url)
 
-    # Initialize Beanie with ALL your document models
-    # This maps your Python classes to MongoDB collections
+    # Initialize Beanie with ALL document models
     await init_beanie(
         database=client.get_default_database(),
         document_models=[
@@ -45,15 +44,17 @@ async def lifespan(app: FastAPI):
             Task,
             CurrentCrop,
             PastCrop,
-            FieldSoilCondition
+            FieldSoilCondition,
+            CropInfo,       # <-- ADDED
+            SoilLibrary,    # <-- ADDED
+            CropTimeline    # <-- ADDED
         ],
     )
 
-    print("✅ Beanie initialized with all models.")
+    print("✅ Beanie initialized with all models (including New Datasets).")
 
-    yield  # The application runs here
+    yield
 
-    # Shutdown logic: Close connection
     client.close()
     print("🛑 Database connection closed.")
 
@@ -76,9 +77,7 @@ app.add_middleware(
 # ------------------ ROUTERS ------------------
 app.include_router(auth_router)
 app.include_router(farm_router)
-# --- NEW: Register the Prediction Router ---
 app.include_router(prediction_router)
-
 
 # ------------------ HEALTH CHECK ------------------
 @app.get("/", tags=["Health"])

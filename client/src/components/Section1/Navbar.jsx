@@ -383,7 +383,12 @@ const Navbar = () => {
         animate="visible"
         className="fixed top-0 left-0 right-0 z-50 px-6 md:px-20 py-4 pt-7 flex items-center justify-between border-b-[0.5px] font-[Poppins]"
       >
-        <div className="text-2xl font-bold text-teal-400">icon</div>
+        {/* <div className="text-2xl font-bold text-teal-400">icon</div> */}
+        <img 
+          src="/s2s-icon-default.png" 
+          alt="Soil2Silicon Logo"
+          className="h-10 w-auto md:h-14 lg:h-16 object-contain"
+        />
 
         {/* Desktop */}
         <div className="hidden md:flex items-center space-x-8 text-white">

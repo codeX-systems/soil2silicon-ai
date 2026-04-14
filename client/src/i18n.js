@@ -92,9 +92,9 @@ const resources = {
       "footer_codex_logo": "CodeX Logo",
       "footer_app_logo": "App Logo",
       "footer_developed_by": "Developed by CodeX",
-      "footer_rights": "© 2025 Soil To Silicon — All rights reserved",
+      "footer_rights": "© 2026 Soil To Silicon (Soil2Silicon) — Open Source",
       "footer_powered_by": "© Powered By CodeX",
-      "footer_version": "Version 1.0.0",
+      "footer_version": "Version Alpha 2.0.1",
       "footer_help": "Help",
       "footer_contact": "Contact Us",
 
@@ -127,8 +127,8 @@ const resources = {
 
       // Main Hero-Container
 
-      "hero_titleLine1": "Bridging Soil with",
-      "hero_titleHighlight": "Smart Technology",
+      "hero_titleLine1": "Bringing Soil And ",
+      "hero_titleHighlight": "Silicon Together",
       "hero_description": "Empower your farm with AI-driven crop monitoring, real-time weather insights, soil intelligence, and predictive harvest planning — all in one smart platform built for modern farmers.",
       "hero_cta": "Get Started",
       "hero_badge": "AI Powered Farm Insights",
@@ -157,8 +157,8 @@ const resources = {
 
       "solutions_title1": "AI-Driven Crop Intelligence",
       "solutions_1_slide1": "Soil-based crop and variety recommendations",
-      "solutions_1_slide2": "ML-powered yield prediction models",
-      "solutions_1_slide3": "Disease detection from crop images",
+      "solutions_1_slide2": "No Installation",
+      "solutions_1_slide3": "Disease detection And Guidance",
       "solutions_1_slide4": "Smarter planning using data insights",
 
       "solutions_title2": "Precision Soil & Fertilizer Guidance",
@@ -167,7 +167,7 @@ const resources = {
       "solutions_2_slide3": "Nutrient balance for healthier soil",
       "solutions_2_slide4": "Reduced waste, improved productivity",
 
-      "solutions_title3": "Smart Farming with IoT Monitoring",
+      "solutions_title3": "Smart Farming with Soil Monitoring",
       "solutions_3_slide1": "Real-time soil moisture tracking",
       "solutions_3_slide2": "pH, NPK, and temperature sensing",
       "solutions_3_slide3": "Remote farm condition monitoring",
@@ -180,9 +180,9 @@ const resources = {
       "solutions_4_slide4": "Long-term soil sustainability",
 
       "solutions_title5": "Voice-Enabled & Inclusive Farming",
-      "solutions_5_slide1": "Multilingual AI voice assistance",
+      "solutions_5_slide1": "Multilingual AI Response",
       "solutions_5_slide2": "Simple, farmer-friendly interface",
-      "solutions_5_slide3": "Offline support for low connectivity",
+      "solutions_5_slide3": "Multilingual Support Across App",
       "solutions_5_slide4": "Accessible insights for all literacy levels",
 
       // Crops (WB)
@@ -324,7 +324,77 @@ const resources = {
     "marigold": "Marigold (Genda)",
     "shatavari": "Shatavari",
     "zucchini": "Zucchini"
+      },
+    
+    "view_health_guide": "View Health Guide",
+    "label_soil_library": "Soil Intelligence Library",
+    "field_reading_history": "Field Reading History",
+    "health_diagnostic": "Health Diagnostic",
+    "recommended_treatment": "Recommended Treatment",
+    "soil_alluvial": "Alluvial Soil",
+    "soil_desc_alluvial": "Highly fertile soil found in river plains. Rich in phosphorus and potassium, perfect for wheat and rice.",
+    "soil_black": "Black Soil",
+    "soil_desc_black": "Also known as Regur soil. Moisture-retentive and rich in iron and lime; ideal for cotton and pulses.",
+    "soil_red": "Red Soil",
+    "soil_desc_red": "Formed from crystalline rock. High iron content makes it red. Good for tobacco, millets, and oilseeds.",
+    "soil_loamy": "Loamy Soil",
+    "soil_desc_loamy": "A balanced mix of sand, silt, and clay. Excellent drainage and nutrients for almost all vegetables.",
+    
+    // footer-main
+  "footer": {
+    "brandNamePart1": "Soil",
+    "brandNamePart2": "2",
+    "brandNamePart3": "Silicon",
+    "description": "Pioneering digital agriculture through ML Ops and high-performance web development.",
+    "links": {
+      "home": "Home",
+      "about": "About Team",
+      "contact": "Contact"
+    },
+    "copyright": "© {{year}} CodeX Open Source. Licence Awaited.",
+    "legal": {
+      "privacy": "Privacy Policy Awaited",
+      "terms": "Terms of Service Awaited"
+    }
+  },
+  "section6": {
+    "titlePart1": "Let’s build the",
+    "titleHighlight": "future",
+    "titlePart2": "of agriculture.",
+    "description": "Whether you're interested in our ML models, web architecture, or just want to talk shop about ML Ops—we're always open to collaboration.",
+    "ctaCard": {
+      "title": "Start a Project",
+      "description": "Ready to deploy a custom ML solution for your cultivation needs?",
+      "button": "Get Started Now"
+    }
+  },
+  "section5": {
+    "header": "CodeX",
+    "teamIntro": {
+      "part1": "A specialized development team focused extensively on modern",
+      "webDev": "Web Development",
+      "and": "and",
+      "mlOps": "ML Ops"
+    },
+    "mission": {
+      "label": "The Mission",
+      "statement": "Building a centralised digital agriculture solution that seamlessly wraps cultivation guidance with ML-based crop recommendation and real-time monitoring."
+    },
+    "features": {
+      "collab": {
+        "title": "Collaborative Coding",
+        "desc": "Build projects together in real-time with global developers."
+      },
+      "version": {
+        "title": "Version Control",
+        "desc": "Integrated Git workflows for seamless project management."
+      },
+      "intelligence": {
+        "title": "Open Source Tech Stack",
+        "desc": "Use Of Open Source Tech Stack For Enhancing Coding Communities."
       }
+    }
+  }
     }
   },
 
@@ -415,7 +485,7 @@ const resources = {
       "footer_developed_by": "CodeX द्वारा विकसित",
       "footer_rights": "© 2025 Soil To Silicon — सर्वाधिकार सुरक्षित",
       "footer_powered_by": "© CodeX द्वारा संचालित",
-      "footer_version": "संस्करण 1.0.0",
+      "footer_version": "संस्करण Alpha 2.0.1",
       "footer_help": "सहायता",
       "footer_contact": "संपर्क करें",
 
@@ -645,7 +715,76 @@ const resources = {
     "marigold": "गेंदा",
     "shatavari": "शतावरी",
     "zucchini": "ज़ुकीनी"
+    },
+
+    "view_health_guide": "स्वास्थ्य मार्गदर्शिका देखें",
+    "label_soil_library": "मिट्टी सूचना पुस्तकालय",
+    "field_reading_history": "खेत की हालिया रिपोर्ट",
+    "health_diagnostic": "स्वास्थ्य निदान",
+    "recommended_treatment": "सुझाया गया उपचार",
+    "soil_alluvial": "जलोढ़ मिट्टी",
+    "soil_desc_alluvial": "नदी के मैदानों में पाई जाने वाली अत्यधिक उपजाऊ मिट्टी। फास्फोरस और पोटेशियम से भरपूर, गेहूं और चावल के लिए उत्तम।",
+    "soil_black": "काली मिट्टी",
+    "soil_desc_black": "इसे रेगुर मिट्टी भी कहा जाता है। नमी सोखने वाली और लोहे और चूने से भरपूर; कपास और दालों के लिए आदर्श।",
+    "soil_red": "लाल मिट्टी",
+    "soil_desc_red": "क्रिस्टलीय चट्टान से निर्मित। आयरन की अधिकता इसे लाल बनाती है। तंबाकू, बाजरा और तिलहन के लिए अच्छी है।",
+    "soil_loamy": "दोमट मिट्टी",
+    "soil_desc_loamy": "रेत, गाद और मिट्टी का संतुलित मिश्रण। लगभग सभी सब्जियों के लिए उत्कृष्ट जल निकासी और पोषक तत्व प्रदान करती है।",
+
+    // footer-main
+    "footer": {
+    "brandNamePart1": "Soil",
+    "brandNamePart2": "2Silicon",
+    "description": "ML Ops और उच्च-प्रदर्शन वेब विकास के माध्यम से डिजिटल कृषि में अग्रणी।",
+    "links": {
+      "home": "होम",
+      "about": "टीम के बारे में",
+      "contact": "संपर्क करें"
+    },
+    "copyright": "© {{year}} CodeX देव टीम। सर्वाधिकार सुरक्षित।",
+    "legal": {
+      "privacy": "गोपनीयता नीति",
+      "terms": "सेवा की शर्तें"
     }
+  },
+  "section6": {
+    "titlePart1": "आइए कृषि के",
+    "titleHighlight": "भविष्य",
+    "titlePart2": "का निर्माण करें।",
+    "description": "चाहे आप हमारे एमएल मॉडल, वेब आर्किटेक्चर में रुचि रखते हों, या बस एमएल ऑप्स के बारे में बात करना चाहते हों—हम सहयोग के लिए हमेशा तैयार हैं।",
+    "ctaCard": {
+      "title": "परियोजना शुरू करें",
+      "description": "अपनी खेती की जरूरतों के लिए कस्टम एमएल समाधान तैनात करने के लिए तैयार हैं?",
+      "button": "अभी शुरू करें"
+    }
+  },
+  "section5": {
+    "header": "CodeX",
+    "teamIntro": {
+      "part1": "एक विशेषज्ञ विकास टीम जो आधुनिक",
+      "webDev": "वेब विकास",
+      "and": "और",
+      "mlOps": "ML Ops पर केंद्रित है"
+    },
+    "mission": {
+      "label": "मिशन",
+      "statement": "एक केंद्रीकृत डिजिटल कृषि समाधान का निर्माण करना जो खेती के मार्गदर्शन को ML-आधारित फसल सिफारिश और वास्तविक समय की निगरानी के साथ सहजता से जोड़ता है।"
+    },
+    "features": {
+      "collab": {
+        "title": "सहयोगात्मक कोडिंग",
+        "desc": "वैश्विक डेवलपर्स के साथ वास्तविक समय में मिलकर प्रोजेक्ट बनाएं।"
+      },
+      "version": {
+        "title": "वर्जन कंट्रोल",
+        "desc": "निर्बाध प्रोजेक्ट प्रबंधन के लिए एकीकृत Git वर्कफ़्लो।"
+      },
+      "intelligence": {
+        "title": "कोड इंटेलिजेंस",
+        "desc": "विकास को गति देने और बग्स को कम करने के लिए AI-सहायता प्राप्त कोडिंग।"
+      }
+    }
+  }
     }
   },
 
@@ -736,7 +875,7 @@ const resources = {
       "footer_developed_by": "CodeX দ্বারা উন্নত",
       "footer_rights": "© 2025 Soil To Silicon — সর্বস্বত্ব সংরক্ষিত",
       "footer_powered_by": "© CodeX দ্বারা পরিচালিত",
-      "footer_version": "সংস্করণ 1.0.0",
+      "footer_version": "সংস্করণ Alpha 2.0.1",
       "footer_help": "সহায়তা",
       "footer_contact": "যোগাযোগ করুন",
 
@@ -966,7 +1105,75 @@ const resources = {
     "marigold": "গাঁদা",
     "shatavari": "শতাবরী",
     "zucchini": "জুচিনি"
+      },
+
+    "view_health_guide": "স্বাস্থ্য নির্দেশিকা দেখুন",
+    "label_soil_library": "মাটি তথ্য ভাণ্ডার",
+    "field_reading_history": "মাঠের সাম্প্রতিক তথ্য",
+    "health_diagnostic": "স্বাস্থ্য নির্ণয়",
+    "recommended_treatment": "প্রস্তাবিত প্রতিকার",
+    "soil_alluvial": "পলি মাটি",
+    "soil_desc_alluvial": "নদীর অববাহিকায় পাওয়া অত্যন্ত উর্বর মাটি। ফসফরাস এবং পটাশিয়াম সমৃদ্ধ, ধান ও গমের জন্য উপযুক্ত।",
+    "soil_black": "কৃষ্ণ মৃত্তিকা",
+    "soil_desc_black": "জল ধরে রাখার ক্ষমতা সম্পন্ন এবং লোহা ও চুন সমৃদ্ধ; তুলা এবং ডাল চাষের জন্য আদর্শ।",
+    "soil_red": "লাল মাটি",
+    "soil_desc_red": "কেলাসিত শিলা থেকে তৈরি। লোহার উপস্থিতির কারণে লাল রঙ হয়। তামাক, মিলেট এবং তৈলবীজের জন্য ভালো।",
+    "soil_loamy": "দোআঁশ মাটি",
+    "soil_desc_loamy": "বালি, পলি এবং কাদার সুষম মিশ্রণ। প্রায় সব ধরণের সবজির জন্য চমৎকার নিষ্কাশন এবং পুষ্টি সরবরাহ করে।",
+
+  "footer": {
+    "brandNamePart1": "Soil",
+    "brandNamePart2": "2Silicon",
+    "description": "ML Ops এবং উচ্চ-পারফরম্যান্স ওয়েব ডেভেলপমেন্টের মাধ্যমে ডিজিটাল কৃষিতে অগ্রগামী।",
+    "links": {
+      "home": "হোম",
+      "about": "টিম সম্পর্কে",
+      "contact": "যোগাযোগ"
+    },
+    "copyright": "© {{year}} CodeX দেব টিম। সমস্ত অধিকার সংরক্ষিত।",
+    "legal": {
+      "privacy": "গোপনীয়তা নীতি",
+      "terms": "পরিষেবার শর্তাবলী"
+    }
+  },
+  "section6": {
+    "titlePart1": "আসুন কৃষির",
+    "titleHighlight": "ভবিষ্যৎ",
+    "titlePart2": "গড়ে তুলি।",
+    "description": "আপনি আমাদের এমএল (ML) মডেল, ওয়েব আর্কিটেকচার সম্পর্কে আগ্রহী হন বা এমএল অপস (ML Ops) নিয়ে আলোচনা করতে চান—আমরা সহযোগিতার জন্য সর্বদা প্রস্তুত।",
+    "ctaCard": {
+      "title": "প্রকল্প শুরু করুন",
+      "description": "আপনার চাষাবাদের প্রয়োজনে একটি কাস্টম এমএল (ML) সমাধান প্রয়োগ করতে প্রস্তুত?",
+      "button": "এখনই শুরু করুন"
+    }
+  },
+  "section5": {
+    "header": "CodeX",
+    "teamIntro": {
+      "part1": "একটি বিশেষায়িত ডেভেলপমেন্ট টিম যা আধুনিক",
+      "webDev": "ওয়েব ডেভেলপমেন্ট",
+      "and": "এবং",
+      "mlOps": "ML Ops-এর ওপর নিবিড়ভাবে কাজ করে"
+    },
+    "mission": {
+      "label": "মূল লক্ষ্য",
+      "statement": "একটি কেন্দ্রীভূত ডিজিটাল কৃষি সমাধান তৈরি করা যা চাষাবাদের নির্দেশনার সাথে ML-ভিত্তিক ফসল সুপারিশ এবং রিয়েল-টাইম পর্যবেক্ষণকে একত্রিত করে।"
+    },
+    "features": {
+      "collab": {
+        "title": "সহযোগিতামূলক কোডিং",
+        "desc": "বিশ্বব্যাপী ডেভেলপারদের সাথে রিয়েল-টাইমে প্রজেক্ট তৈরি করুন।"
+      },
+      "version": {
+        "title": "ভার্সন কন্ট্রোল",
+        "desc": "নিরবচ্ছিন্ন প্রজেক্ট ম্যানেজমেন্টের জন্য ইন্টিগ্রেটেড গিট (Git) ওয়ার্কফ্লো।"
+      },
+      "intelligence": {
+        "title": "কোড ইন্টেলিজেন্স",
+        "desc": "ডেভেলপমেন্টের গতি বাড়াতে এবং বাগ কমাতে AI-চালিত কোডিং।"
       }
+    }
+  }
     }
   }
 };

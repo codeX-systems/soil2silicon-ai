@@ -81,6 +81,8 @@ import Section6 from './components/Section6.jsx'
 import Navbar from "./components/Section1/Navbar.jsx"
 import AuthForm from "./components/AuthForm.jsx"
 
+import FooterMain from "./components/FooterMain.jsx"
+
 // ✅ Dashboard import
 import Dashboard from "./components/Dashboard.jsx"
 
@@ -92,6 +94,7 @@ const Home = () => (
     <OurSolutions />
     <Section5/>
     <Section6/>
+    <FooterMain />
   </div>
 )
 

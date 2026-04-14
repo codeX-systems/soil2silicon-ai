@@ -61,3 +61,84 @@ export const updateUser = (data) => request("/auth/update", "PUT", data);
  * @param {Object} data - Contains state, districts, soil, start_month, etc.
  */
 export const predictCrop = (data) => request("/predict/", "POST", data);
+
+// -----------------------Crop Search-------------------------------------
+
+export const searchCrops = async (query) => {
+  const res = await fetch(`http://localhost:8000/farm/search-crops?q=${query}`, {
+    credentials: "include"
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to search crops");
+  }
+
+  return await res.json();
+};
+
+// ------------------------Crop Info---------------------------------------
+
+export const fetchCropHealth = async (cropName) => {
+  const res = await fetch(`http://localhost:8000/farm/crop-health/${cropName}`, {
+    credentials: "include"
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch crop health");
+  }
+
+  return await res.json();
+};
+
+// ------------------------Soil Library----------------------------------------
+export const fetchSoilLibrary = async () => {
+  const res = await fetch("http://localhost:8000/farm/soil-library", {
+    credentials: "include",
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch soil library");
+
+  return res.json();
+};
+
+// ------------------------Weather Integration----------------------------------
+export const fetchWeather = async (lat, lon) => {
+  try {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    return {
+      temperature: data.current.temperature_2m,
+      humidity: data.current.relative_humidity_2m,
+      windSpeed: data.current.wind_speed_10m,
+      weatherCode: data.current.weather_code
+    };
+  } catch (err) {
+    throw new Error("Weather fetch failed");
+  }
+};
+
+export const getLatLonFromDistrict = async (district, state = "West Bengal") => {
+  try {
+    const query = `${district}, ${state}, India`;
+
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (!data || data.length === 0) {
+      throw new Error("Location not found");
+    }
+
+    return {
+      lat: parseFloat(data[0].lat),
+      lon: parseFloat(data[0].lon),
+      displayName: data[0].display_name
+    };
+  } catch (err) {
+    throw new Error("Geocoding failed");
+  }
+};

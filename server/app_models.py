@@ -1,9 +1,9 @@
 # app_models.py
 
 from datetime import datetime, timezone
-from typing import Optional
+from typing import Optional, List
 from beanie import Document, Indexed
-from pydantic import Field
+from pydantic import Field, BaseModel
 
 
 # ==========================================================
@@ -81,7 +81,7 @@ class PastCrop(Document):
 
 class FieldSoilCondition(Document):
     user_id: str
-
+    image_url: Optional[str] = None
     field_id: str = Indexed(unique=True)
 
     soil_type: str
@@ -96,3 +96,50 @@ class FieldSoilCondition(Document):
 
     class Settings:
         name = "field_soil_conditions"
+
+# ==========================================================
+# ---------------- NEW DATA MODELS -------------------------
+# ==========================================================
+
+class DiseaseInfo(BaseModel):
+    name: str
+    bengali_name: str
+    hindi_name: str
+    img: Optional[str] = "https://via.placeholder.com/150"
+    time_weeks: str
+    prevention: str
+    cure: str
+    organic_inputs: str
+
+class CropInfo(Document):
+    crop_name: str
+    bengali_name: str
+    hindi_name: str
+    img: Optional[str] = None # ✅ FIXED
+    diseases: List[DiseaseInfo]
+
+    class Settings:
+        name = "crop_info"
+
+class SoilLibrary(Document):
+    soil_type: str
+    image_url: str
+
+    class Settings:
+        name = "soil_library"
+
+class CropTimeline(Document):
+    crop_name: str
+    district: str
+    month: str
+    land_prep_week: int
+    sowing_week: int
+    germination_week: int
+    growing_week: int
+    fertilizing_week: int
+    watering_week: int
+    weeding_week: int
+    harvesting_week: int
+
+    class Settings:
+        name = "crop_timelines"

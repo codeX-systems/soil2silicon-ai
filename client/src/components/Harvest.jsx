@@ -81,6 +81,42 @@ export default function HarvestBar({ percentage = 0, cropName = "Crops", isMulti
     return "bg-gradient-to-r from-green-500 to-yellow-400";
   };
 
+  const getCropAlert = () => {
+  if (percentage >= 95) {
+    return {
+      type: "critical",
+      text: "🚨 Harvest Ready — Stop irrigation & prepare harvesting"
+    };
+  }
+
+  if (percentage >= 80) {
+    return {
+      type: "warning",
+      text: "⚠️ Ripening stage — Reduce irrigation gradually"
+    };
+  }
+
+  if (percentage >= 50) {
+    return {
+      type: "info",
+      text: "🌿 Active growth — Maintain regular irrigation"
+    };
+  }
+
+  if (percentage >= 20) {
+    return {
+      type: "info",
+      text: "🌱 Early growth — Ensure consistent watering"
+    };
+  }
+
+  return {
+    type: "info",
+    text: "🌱 Germination stage — Light irrigation recommended"
+  };
+};
+  
+  const alert = getCropAlert();
   return (
     <div className="mx-4 my-2 p-6 bg-white rounded-3xl border border-green-100 shadow-sm relative overflow-hidden">
       {/* Background Decorative Icon */}
@@ -127,6 +163,19 @@ export default function HarvestBar({ percentage = 0, cropName = "Crops", isMulti
             : t("harvest_in_growth")}
         </span>
       </div>
+        {alert && (
+        <div
+          className={`mt-3 p-2 rounded-xl text-[10px] font-bold uppercase tracking-wide ${
+            alert.type === "critical"
+              ? "bg-red-500 text-white"
+              : alert.type === "warning"
+              ? "bg-yellow-400 text-black"
+              : "bg-green-100 text-green-800"
+          }`}
+        >
+          {alert.text}
+        </div>
+        )}
     </div>
   );
 }
