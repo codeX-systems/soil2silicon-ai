@@ -8,25 +8,42 @@ import os
 # ======================================
 # This finds the 'ml' folder sitting one level above the current 'server' folder
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ML_FOLDER = os.path.join(BASE_DIR, "..", "ml")
+ML_FOLDER = os.path.join(BASE_DIR, "ml")
 
 MODEL_PATH = os.path.join(ML_FOLDER, 'random_forest_1031_model_143.pkl')
 PREPROCESSOR_PATH = os.path.join(ML_FOLDER, 'preprocessor.pkl')
 
 # Initialize as None to prevent crashes if files are missing
-rf_model = None
-preprocessor = None
-crop_cols = []
+# rf_model = None
+# preprocessor = None
+# crop_cols = []
 
-if os.path.exists(MODEL_PATH) and os.path.exists(PREPROCESSOR_PATH):
-    rf_model = joblib.load(MODEL_PATH)
+# if os.path.exists(MODEL_PATH) and os.path.exists(PREPROCESSOR_PATH):
+#     rf_model = joblib.load(MODEL_PATH)
+#     preprocessor = joblib.load(PREPROCESSOR_PATH)
+
+#     # Identify Crop columns to exclude from prediction input
+#     crop_cols = [i for i, col in enumerate(preprocessor.get_feature_names_out()) if 'Crop_' in col]
+#     print(f"✅ ML Models loaded successfully from {ML_FOLDER}")
+# else:
+#     print(f"❌ ML Models NOT found at {ML_FOLDER}. Check your folder structure!")
+
+
+def load_ml_models():
+    if not os.path.exists(MODEL_PATH) or not os.path.exists(PREPROCESSOR_PATH):
+        raise Exception(f"ML files not found in {ML_FOLDER}")
+
+    model = joblib.load(MODEL_PATH)
     preprocessor = joblib.load(PREPROCESSOR_PATH)
 
-    # Identify Crop columns to exclude from prediction input
-    crop_cols = [i for i, col in enumerate(preprocessor.get_feature_names_out()) if 'Crop_' in col]
-    print(f"✅ ML Models loaded successfully from {ML_FOLDER}")
-else:
-    print(f"❌ ML Models NOT found at {ML_FOLDER}. Check your folder structure!")
+    crop_cols = [
+        i for i, col in enumerate(preprocessor.get_feature_names_out())
+        if 'Crop_' in col
+    ]
+
+    print("✅ ML models loaded successfully")
+
+    return model, preprocessor, crop_cols
 
 
 # ======================================
@@ -67,13 +84,13 @@ def clean_weather_columns(df):
 # ======================================
 # 3️⃣ Prediction Logic
 # ======================================
-def predict_crop_logic(**features):
+def predict_crop_logic(model,preprocessor,crop_cols,**features):
     """
     Core logic to transform user input and return prediction.
     """
-    if rf_model is None or preprocessor is None:
-        raise Exception("ML Models are not loaded. Check server logs for path errors.")
-
+    # if rf_model is None or preprocessor is None:
+    #     raise Exception("ML Models are not loaded. Check server logs for path errors.")
+    encoded=preprocessor.transform(df)
     # Convert incoming dict to DataFrame
     df = pd.DataFrame([features])
 
@@ -110,6 +127,6 @@ def predict_crop_logic(**features):
     encoded_features = np.delete(encoded, crop_cols, axis=1) if crop_cols else encoded
 
     # Predict
-    prediction = rf_model.predict(encoded_features)
+    prediction = model.predict(encoded_features)
 
     return prediction[0]

@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
 from dotenv import load_dotenv
+from ml_utils import load_ml_models
 
 # Load environment variables
 load_dotenv()
@@ -30,15 +31,20 @@ from prediction_routes import router as prediction_router
 # ------------------ LIFESPAN ------------------
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    model,preprocessor,crop_cols = load_ml_models()
+    app.state.model = model
+    app.state.preprocessor = preprocessor
+    app.state.crop_cols = crop_cols
+    print("ML Models loaded into app state.")
     database_url = os.getenv("DATABASE_URL")
     if not database_url:
         raise RuntimeError("DATABASE_URL not set in .env")
-
+    print("Database url:", database_url)
     client = AsyncIOMotorClient(database_url)
 
     # Initialize Beanie with ALL document models
     await init_beanie(
-        database=client.get_default_database(),
+        database=client["soil2silicon"],
         document_models=[
             User,
             Task,

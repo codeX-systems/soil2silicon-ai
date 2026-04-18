@@ -22,7 +22,7 @@ async def upload_data():
         return
 
     client = AsyncIOMotorClient(database_url)
-    db = client.get_default_database()
+    db = client["soil2silicon"]
 
     try:
         # 2. Initialize Beanie

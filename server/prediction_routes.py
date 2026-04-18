@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 from ml_utils import predict_crop_logic
+from fastapi import Request
 
 router = APIRouter(prefix="/predict", tags=["ML Prediction"])
 
@@ -39,7 +40,10 @@ def normalize_crop_name(crop_name: str) -> str:
 
 # --- 3️⃣ The Prediction Endpoint ---
 @router.post("/")
-async def get_prediction(data: PredictionRequest):
+async def get_prediction(data: PredictionRequest,request:Request):
+    model= request.app.state.model
+    preprocessor=request.app.state.preprocessor
+    crop_cols=request.app.state.crop_cols
     """
     Receives farming parameters and returns a structured crop recommendation.
     Frontend handles translation and voice.
@@ -57,8 +61,13 @@ async def get_prediction(data: PredictionRequest):
         features = data.model_dump()
 
         # Run ML logic
-        recommended_crop_raw = predict_crop_logic(**features)
-
+        # recommended_crop_raw = predict_crop_logic(**features)
+        recommended_crop_raw = predict_crop_logic(
+            model,
+            preprocessor,
+            crop_cols,
+            **features
+        )
         # Normalize crop name for frontend i18n
         recommended_crop = normalize_crop_name(recommended_crop_raw)
 
