@@ -59,6 +59,11 @@ async def get_prediction(data: PredictionRequest,request:Request):
     try:
         # Convert Pydantic object to dictionary
         features = data.model_dump()
+        features.pop("state", None)
+        
+        print("📦 Incoming features:", features)
+        
+        # recommended_crop_raw = predict_crop_logic(**features)
 
         # Run ML logic
         # recommended_crop_raw = predict_crop_logic(**features)
@@ -79,7 +84,8 @@ async def get_prediction(data: PredictionRequest,request:Request):
         }
 
     except Exception as e:
+        print("❌ ML ERROR:", str(e))   # 👈 ADD THIS
         raise HTTPException(
             status_code=500,
-            detail="ml_processing_error"
+            detail=str(e)   # 👈 show actual error
         )

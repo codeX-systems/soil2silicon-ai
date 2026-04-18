@@ -98,14 +98,43 @@ const ModalSelect = ({ label, options = [], ...props }) => (
   </div>
 );
 
-const ModalButtons = ({ close, action, onAction }) => {
+// const ModalButtons = ({ close, action, onAction }) => {
+//   const { t } = useTranslation();
+//   return (
+//     <div className="flex gap-3 mt-6">
+//       <button onClick={close} className="w-1/2 py-3 rounded-xl bg-gray-200 text-gray-800 font-medium">{t('close')}</button>
+//       {action && (
+//         <button onClick={onAction} className="w-1/2 py-3 rounded-xl bg-green-600 text-white font-semibold shadow-md hover:bg-green-700 transition">
+//           {action}
+//         </button>
+//       )}
+//     </div>
+//   );
+// };
+
+const ModalButtons = ({ close, action, onAction, disabled }) => {
   const { t } = useTranslation();
+
   return (
     <div className="flex gap-3 mt-6">
-      <button onClick={close} className="w-1/2 py-3 rounded-xl bg-gray-200 text-gray-800 font-medium">{t('close')}</button>
+      <button
+        onClick={close}
+        className="w-1/2 py-3 rounded-xl bg-gray-200 text-gray-800 font-medium"
+      >
+        {t('close')}
+      </button>
+
       {action && (
-        <button onClick={onAction} className="w-1/2 py-3 rounded-xl bg-green-600 text-white font-semibold shadow-md hover:bg-green-700 transition">
-          {action}
+        <button
+          onClick={onAction}
+          disabled={disabled}
+          className={`w-1/2 py-3 rounded-xl font-semibold shadow-md transition
+            ${disabled
+              ? "bg-green-300 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-700 text-white"}
+          `}
+        >
+          {disabled ? "Adding..." : action}
         </button>
       )}
     </div>
@@ -278,9 +307,18 @@ const speak = (text) => {
     }
   };
 
+  const hasLoaded = React.useRef(false);
+
   useEffect(() => {
+    if (hasLoaded.current) return;
+    hasLoaded.current = true;
+
     loadAllData();
   }, []);
+  
+  // useEffect(() => {
+  //   loadAllData();
+  // }, []);
 
   // ---------- Handlers ----------
   const handleUpdateProfile = async () => {
@@ -317,29 +355,46 @@ const speak = (text) => {
     } catch (err) { console.error(err.message); }
   };
 
-  const handleAddCrop = async () => {
-    try {
-      const planted = new Date(newCropData.planted_date);
-      const harvest = new Date(newCropData.expected_harvest_date);
+  const [isAddingCrop, setIsAddingCrop] = useState(false);
 
-      const payload = {
-        ...newCropData,
-        crop_id: `crop_${Date.now()}`,
-        start_month: planted.getMonth() + 1,
-        end_month: harvest.getMonth() + 1,
-        planted_date: planted.toISOString(),
-        expected_harvest_date: harvest.toISOString()
-      };
+const handleAddCrop = async () => {
+  if (isAddingCrop) return;
 
-      await createCurrentCrop(payload);
-      await loadAllData();
-      closeModal();
-    } catch (err) {
-      alert(err.message);
-    }
-  };
+  setIsAddingCrop(true);
 
-  const handleAddSoil = async () => {
+  try {
+    const planted = new Date(newCropData.planted_date);
+    const harvest = new Date(newCropData.expected_harvest_date);
+
+    const payload = {
+      ...newCropData,
+      crop_id: `crop_${Date.now()}`,
+      start_month: planted.getMonth() + 1,
+      end_month: harvest.getMonth() + 1,
+      planted_date: planted.toISOString(),
+      expected_harvest_date: harvest.toISOString()
+    };
+
+    await createCurrentCrop(payload);
+    await loadAllData();
+    closeModal();
+
+  } catch (err) {
+    alert(err.message);
+  } finally {
+    setIsAddingCrop(false);  // ✅ reset state
+  }
+};
+
+//   
+
+const [isAddingSoil, setIsAddingSoil] = useState(false);
+
+const handleAddSoil = async () => {
+  if (isAddingSoil) return;   // 🚫 prevent double click
+
+  setIsAddingSoil(true);
+
   try {
     const matchedSoil = soilLibrary.find(
       (s) => s.soil_type === newSoilData.soil_type
@@ -351,13 +406,14 @@ const speak = (text) => {
       image_url: matchedSoil?.image_url || ""
     };
 
-    await createFieldSoil(payload);   // ✅ THIS WAS MISSING
-
-    await loadAllData();              // ✅ refresh UI
-    closeModal();                     // ✅ close modal
+    await createFieldSoil(payload);
+    await loadAllData();
+    closeModal();
 
   } catch (err) {
     alert(err.message);
+  } finally {
+    setIsAddingSoil(false);   // ✅ important
   }
 };
 
@@ -768,7 +824,7 @@ const speak = (text) => {
             </div>
             <ModalInput type="number" label={`${t('moisture') || 'Moisture'} %`} placeholder="0" onChange={(e) => setNewSoilData({...newSoilData, moisture_percent: parseFloat(e.target.value)})} />
           </div>
-          <ModalButtons close={closeModal} action={t('auto_save_records') || "Save Records"} onAction={handleAddSoil} />
+          <ModalButtons close={closeModal} action={t('auto_save_records') || "Save Records"} onAction={handleAddSoil} disabled={isAddingSoil}/>
         </ModalWrapper>
       )}
 
@@ -788,7 +844,7 @@ const speak = (text) => {
             <ModalInput type="date" label={t('planted_date')} onChange={(e) => setNewCropData({...newCropData, planted_date: e.target.value})} />
             <ModalInput type="date" label={t('exp_harvest')} onChange={(e) => setNewCropData({...newCropData, expected_harvest_date: e.target.value})} />
           </div>
-          <ModalButtons close={closeModal} action={t('auto_register_crop') || "Register Crop"} onAction={handleAddCrop} />
+          <ModalButtons close={closeModal}  action={t('auto_register_crop') || "Register Crop"} onAction={handleAddCrop} disabled={isAddingCrop} />
         </ModalWrapper>
       )}
 

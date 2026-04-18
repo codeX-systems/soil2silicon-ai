@@ -88,11 +88,10 @@ def predict_crop_logic(model,preprocessor,crop_cols,**features):
     """
     Core logic to transform user input and return prediction.
     """
+    # 1️⃣ Convert incoming dict to DataFrame
+    df = pd.DataFrame([features])
     # if rf_model is None or preprocessor is None:
     #     raise Exception("ML Models are not loaded. Check server logs for path errors.")
-    encoded=preprocessor.transform(df)
-    # Convert incoming dict to DataFrame
-    df = pd.DataFrame([features])
 
     # Map keys to match the preprocessor's expected column names
     df = df.rename(columns={
@@ -122,7 +121,7 @@ def predict_crop_logic(model,preprocessor,crop_cols,**features):
 
     # Transform using preprocessor
     encoded = preprocessor.transform(df)
-
+    
     # Remove encoded Crop columns before passing to RF Model
     encoded_features = np.delete(encoded, crop_cols, axis=1) if crop_cols else encoded
 
