@@ -1,5 +1,5 @@
 // src/api.js
-const BASE_URL = "http://localhost:8000"; // change if backend runs elsewhere
+const BASE_URL = "https://soil2silicon-ai.onrender.com"; // change if backend runs elsewhere
 
 // Helper to get JWT token from localStorage
 const getToken = () => localStorage.getItem("token");
