@@ -85,6 +85,7 @@ import FooterMain from "./components/FooterMain.jsx"
 
 // ✅ Dashboard import
 import Dashboard from "./components/Dashboard.jsx"
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 // Home Component
 const Home = () => (
@@ -118,6 +119,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<AuthForm />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         {/* Protected Dashboard */}
         <Route

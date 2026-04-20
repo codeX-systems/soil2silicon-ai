@@ -353,7 +353,7 @@ const resources = {
     },
     "copyright": "© {{year}} CodeX Open Source. Licence Awaited.",
     "legal": {
-      "privacy": "Privacy Policy Awaited",
+      "privacy": "Privacy Policy",
       "terms": "Terms of Service Awaited"
     }
   },
@@ -363,9 +363,9 @@ const resources = {
     "titlePart2": "of agriculture.",
     "description": "Whether you're interested in our ML models, web architecture, or just want to talk shop about ML Ops—we're always open to collaboration.",
     "ctaCard": {
-      "title": "Start a Project",
-      "description": "Ready to deploy a custom ML solution for your cultivation needs?",
-      "button": "Get Started Now"
+      "title": "Feedback Form",
+      "description": "Help us ceate a better app by providing your valuable insights.",
+      "button": "Feedback Form"
     }
   },
   "section5": {

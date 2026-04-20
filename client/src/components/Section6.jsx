@@ -204,9 +204,14 @@ const Section6 = () => {
               <p className="text-gray-400 mb-8">
                 {t("section6.ctaCard.description")}
               </p>
-              <button className="w-full bg-teal-500 hover:bg-teal-400 text-gray-900 font-bold py-4 rounded-xl transition-all active:scale-95">
+              <a
+                href="https://forms.gle/your-google-form-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full bg-teal-500 hover:bg-teal-400 text-gray-900 font-bold py-4 rounded-xl transition-all active:scale-95 text-center"
+              >
                 {t("section6.ctaCard.button")}
-              </button>
+              </a>
             </div>
           </motion.div>
 

@@ -3,9 +3,10 @@ from pydantic import BaseModel, Field
 from models import User
 from security import hash_password, verify_password, create_access_token, get_current_user
 from typing import Optional
+import os
 
 router = APIRouter(prefix="/auth", tags=["auth"])
-
+ALLOW_REGISTRATION = os.getenv("ALLOW_REGISTRATION", "false").lower() == "true"
 
 class RegisterRequest(BaseModel):
     contact: str = Field(pattern=r"^[0-9]{10}$")
@@ -23,6 +24,13 @@ class LoginRequest(BaseModel):
 
 @router.post("/register", status_code=status.HTTP_201_CREATED)
 async def register(data: RegisterRequest):
+    # 🚫 Block registrations (alpha phase)
+    if not ALLOW_REGISTRATION:
+        print("🚫 Blocked registration attempt")
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Registrations are disabled during testing phase."
+        )
 
     # 🔎 Check contact uniqueness first
     if await User.find_one(User.contact == data.contact):
