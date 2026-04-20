@@ -13,7 +13,7 @@ const AuthForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const baseUrl = "http://localhost:8000/auth";
+    const baseUrl = "https://soil2silicon-ai.onrender.com/auth";
     const endpoint = isLogin ? `${baseUrl}/login` : `${baseUrl}/register`;
     const payload = isLogin ? { contact: formData.contact, password: formData.password } : formData;
 
