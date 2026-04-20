@@ -1,5 +1,5 @@
 // src/api.js
-const BASE_URL = "https://soil2silicon-ai.onrender.com"; // change if backend runs elsewhere
+const BASE_URL = import.meta.env.VITE_API_URL; // change if backend runs elsewhere
 
 // Helper to get JWT token from localStorage
 const getToken = () => localStorage.getItem("token");
@@ -92,7 +92,7 @@ export const fetchCropHealth = async (cropName) => {
 
 // ------------------------Soil Library----------------------------------------
 export const fetchSoilLibrary = async () => {
-  const res = await fetch("${BASE_URL}/farm/soil-library", {
+  const res = await fetch(`${BASE_URL}/farm/soil-library`, {
     credentials: "include",
   });
 
