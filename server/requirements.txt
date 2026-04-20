@@ -6,7 +6,7 @@ uvicorn==0.34.0
 fastapi-cli==0.0.23
 
 # --- Database (MongoDB/Beanie) ---
-beanie==2.0.1
+beanie==2.0.0
 motor==3.7.1
 pymongo==4.11.1
 dnspython==2.8.0
