@@ -65,7 +65,7 @@ export const predictCrop = (data) => request("/predict/", "POST", data);
 // -----------------------Crop Search-------------------------------------
 
 export const searchCrops = async (query) => {
-  const res = await fetch(`http://localhost:8000/farm/search-crops?q=${query}`, {
+  const res = await fetch(`${BASE_URL}/farm/search-crops?q=${query}`, {
     credentials: "include"
   });
 
@@ -79,7 +79,7 @@ export const searchCrops = async (query) => {
 // ------------------------Crop Info---------------------------------------
 
 export const fetchCropHealth = async (cropName) => {
-  const res = await fetch(`http://localhost:8000/farm/crop-health/${cropName}`, {
+  const res = await fetch(`${BASE_URL}/farm/crop-health/${cropName}`, {
     credentials: "include"
   });
 
@@ -92,7 +92,7 @@ export const fetchCropHealth = async (cropName) => {
 
 // ------------------------Soil Library----------------------------------------
 export const fetchSoilLibrary = async () => {
-  const res = await fetch("http://localhost:8000/farm/soil-library", {
+  const res = await fetch("${BASE_URL}/farm/soil-library", {
     credentials: "include",
   });
 
