@@ -3,28 +3,8 @@
 
 ## 🚨 IMPORTANT: Please Read Before Contributing
 
-To ensure smooth collaboration and prevent conflicts, all team members **must strictly follow** the rules below.
+New guidelines are not yet out.
 
----
-
-## 🌿 1. Clone the Correct Branch
-
-All contributors must **only clone and work on their own branch that has already been created in the following format:**
-
-**<theirname-final-dev-uid>**
-
-### Branches created are:
-1. ``` atmoja-final-dev-0023 ```
-2. ``` rohan-final-dev-0078 ```
-3. ``` sidrah-final-dev-0034 ```
-4. ``` adiba-final-dev-0045 ```
-
-Do NOT clone or work on any other branch.
-
-To clone the specific branch:
-```
-git clone -b <their branch name> https://github.com/codeX-systems24/soil2silicon.git
-```
 ## ✍️ 2. Make Changes Carefully
 Make changes only to the files assigned to you.
 
